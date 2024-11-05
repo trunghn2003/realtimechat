@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $dispatchesEvents = [
+        'created' => \App\Events\UserCreated::class,
+        'updated' => \App\Events\UserUpdated::class,
+        'deleted' => \App\Events\UserDeleted::class,
+    ];
 }
