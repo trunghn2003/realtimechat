@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Listeners\BroadCastUserLoginNotification;
+use App\Listeners\BroadCastUserLogoutNotification;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
@@ -21,11 +23,11 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         Login::class => [
-
+            BroadCastUserLoginNotification::class,
         ],
 
         Logout::class => [
-
+            BroadCastUserLogoutNotification::class,
         ],
 
     ];
